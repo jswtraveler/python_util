@@ -5,6 +5,7 @@ def string_90(df):
         freq = df[col].value_counts().cumsum()/df[col].value_counts().sum()
         ninety=freq[freq<=.9].count()
         total=df[col].value_counts().sum()
-        ninety_unique = ninety_unique.append(pd.DataFrame({'Col_Name': col, 'Ninety': ninety, 'Total':total },index=[0]))
+        tot_dist = df[col].nunique()
+        ninety_unique = ninety_unique.append(pd.DataFrame({'Col_Name': col, 'Ninety': ninety, 'Total':total ,'Dist':tot_dist},index=[0]))
 
     return ninety_unique.reset_index(drop=True)
